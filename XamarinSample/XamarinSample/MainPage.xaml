@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Tools="clr-namespace:XamarinSample.Tools"
+             mc:Ignorable="d"
+             x:Class="XamarinSample.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label x:Name="label1" Text="Hello World"
+               FontSize="50"
+               Margin="40"
+               TextColor="Aquamarine"
+               HeightRequest="100" />
+        <Button Text="Click me"
+                TextColor="White"
+                BackgroundColor="Green"
+                BorderColor="Black"
+                BorderRadius="30"
+                Clicked="Button_Clicked"
+                />
+        <Entry Placeholder="Tappez votre nom ici" 
+               Keyboard="Email"
+               IsPassword="False"
+               IsEnabled="True"/>
+
+        <Picker>
+            <Picker.Items>
+                <x:String>Item 1</x:String>
+                <x:String>Item 2</x:String>
+                <x:String>Item 3</x:String>
+            </Picker.Items>
+        </Picker>
+        <DatePicker MinimumDate="01/01/2000" 
+                    MaximumDate="12/31/2030"
+                    />
+        <Label Text="{Binding Source={x:Reference SL}, Path=Value}"/>
+        <Slider x:Name="SL"
+                Minimum="0"
+                Maximum="10" 
+                />
+
+        <Label Text="{Binding Source={x:Reference ST}, Path=Value}"/>
+        <Stepper x:Name="ST"
+                 Minimum="0"
+                 Maximum="10"
+                 Increment="2"/>
+
+        <Image x:Name="monImage"
+               Aspect="AspectFit"
+               HeightRequest="200"
+               Source="{Tools:EmbeddedImage Ressource = XamarinSample.Images.image.png}"/>
+
+    </StackLayout>
+
+</ContentPage>

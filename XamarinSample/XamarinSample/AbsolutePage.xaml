@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Tools="clr-namespace:XamarinSample.Tools"
+             mc:Ignorable="d"
+             x:Class="XamarinSample.AbsolutePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ActivityIndicator IsRunning="{Binding Source={x:Reference MonImage}, Path=IsLoading}" />
+
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <RelativeLayout Grid.ColumnSpan="2"
+                            Grid.RowSpan="2"
+                            BackgroundColor="DarkTurquoise">
+                <BoxView BackgroundColor="Bisque"
+                         x:Name="BX1"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Factor=0.3, Property=Width, Constant=60}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Factor=1,Property=Width}" />
+
+                <Label Text="Mon Profil"
+                       x:Name="MonImage"
+                       FontSize="30"
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BX1, Property=Width, Factor=0.4,Constant=-25}" />
+
+                <Image Source="{Tools:EmbeddedImage Ressource = XamarinSample.Images.image.png}"
+                       Aspect="AspectFit"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BX1, Property=Width, Factor=0.5,Constant=-50}"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=BX1, Property=Height, Factor=0.5, Constant=25}" />
+            </RelativeLayout>
+            <Button Grid.Row="2" Text="Fermer" Clicked="Button_Clicked" />
+        </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
